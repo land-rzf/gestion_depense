@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "DM Sans";
+  --font-display: "Fraunces";
+  --bg: 248 250 252;
+  --panel: 255 255 255;
+  --panel-muted: 248 250 252;
+  --ink: 15 23 42;
+  --muted: 100 116 139;
+  --line: 226 232 240;
+  --brand: 15 118 110;
+  --brand-dark: 13 94 87;
+}
+
+.dark {
+  --bg: 11 18 32;
+  --panel: 17 26 46;
+  --panel-muted: 22 33 56;
+  --ink: 241 245 249;
+  --muted: 148 163 184;
+  --line: 42 55 78;
+  --brand: 45 212 191;
+  --brand-dark: 20 184 166;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background-color: rgb(var(--bg)); background-image: radial-gradient(circle at 10% 0%, rgb(45 212 191 / .12), transparent 26rem), radial-gradient(circle at 94% 12%, rgb(251 113 133 / .08), transparent 24rem); background-attachment: fixed; color: rgb(var(--ink)); font-family: var(--font-sans), Arial, sans-serif; }
+h1, h2, h3 { font-family: var(--font-display), Georgia, serif; letter-spacing: -0.035em; }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+::selection { background: rgb(var(--brand) / .22); }
+
+@layer components {
+  .surface { @apply rounded-[1.35rem] border border-[rgb(var(--line))] bg-[rgb(var(--panel))] shadow-card backdrop-blur-xl; }
+  .input { @apply w-full rounded-xl border border-[rgb(var(--line))] bg-[rgb(var(--panel-muted))] px-3.5 py-3 text-sm text-[rgb(var(--ink))] outline-none transition duration-200 placeholder:text-[rgb(var(--muted))] focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 dark:focus:border-teal-300; }
+  .label { @apply mb-1.5 block text-xs font-bold tracking-wide text-[rgb(var(--muted))]; }
+  .button-primary { @apply inline-flex items-center justify-center gap-2 rounded-xl bg-teal-700 px-4 py-2.5 text-sm font-bold text-white shadow-sm transition duration-150 hover:bg-teal-800 focus:outline-none focus:ring-4 focus:ring-teal-500/20 active:scale-[.98] dark:bg-teal-400 dark:text-slate-950 dark:hover:bg-teal-300; }
+  .button-secondary { @apply inline-flex items-center justify-center gap-2 rounded-xl border border-[rgb(var(--line))] bg-[rgb(var(--panel))] px-4 py-2.5 text-sm font-bold text-[rgb(var(--ink))] transition duration-150 hover:bg-[rgb(var(--panel-muted))] focus:outline-none focus:ring-4 focus:ring-slate-300/40 active:scale-[.98] dark:focus:ring-slate-700/50; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .surface { transition: box-shadow 180ms cubic-bezier(0.23, 1, 0.32, 1), transform 180ms cubic-bezier(0.23, 1, 0.32, 1); }
+  .surface:hover { box-shadow: 0 22px 54px -28px rgb(15 23 42 / .34); }
+}
