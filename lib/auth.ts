@@ -17,7 +17,7 @@ export async function findUserByEmail(email: string) {
 }
 
 export const authOptions: NextAuthOptions = {
-  secret: process.env.NEXTAUTH_SECRET ?? process.env.JWT_SECRET,
+  secret: "Ceci est mon test secret 12345678@...........@1234567532468765Z3",
   session: { strategy: "jwt" },
   pages: { signIn: "/login" },
   providers: [CredentialsProvider({

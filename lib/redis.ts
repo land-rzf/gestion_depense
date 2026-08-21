@@ -4,8 +4,8 @@ let client: Redis | null = null;
 
 export function getRedis() {
   if (client) return client;
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  const url = "https://major-swan-72955.upstash.io";
+  const token = "gQAAAAAAARz7AAIgcDJjNjlkYTNjM2QxN2I0NDkyOTdlMzE0MmMyNzFkZDcxMw";
   if (!url || !token) throw new Error("La connexion à Upstash Redis n’est pas configurée. Vérifiez vos variables d’environnement.");
   client = new Redis({ url, token });
   return client;
